@@ -13,6 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building branch: ${env.BRANCH_NAME}"
+                // Compile Maven project
                 sh 'mvn clean compile'
             }
         }
@@ -20,6 +21,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Running tests for branch: ${env.BRANCH_NAME}"
+                // Run unit tests
                 sh 'mvn test'
             }
         }
@@ -30,7 +32,8 @@ pipeline {
             }
             steps {
                 echo "Deploying application from main branch"
-                // Optional: sh './deploy.sh'
+                // Optional deploy command
+                // sh './deploy.sh'
             }
         }
     }
